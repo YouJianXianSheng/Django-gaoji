@@ -26,28 +26,3 @@ def gradesStudents(request,num):
 	studentsList = grade.students_set.all()
 
 	return render(request,'myApp/students.html',{'students':studentsList})
-#增加学生属性第一种方法
-def addStudents(request):
-	grade = Grades.objects.get(id=2)
-	creatStu = Students.creatStudent('zhangcs',True,25,'wojiaozhangcs',grade)
-	creatStu.save()
-
-	return HttpResponse('dsfsafasf')
-#增加学生属性第二种方法
-def addStudents1(request):
-	grade = Grades.objects.get(id=2)
-	creatStu = Students.stuManager.creadStudents('zhangcs',True,25,'wojiaozhangcs',grade)
-	creatStu.save()
-
-	return HttpResponse('dsfsafasf')
-
-#查询前N条数据
-def students1(request):
-	studentsList = Students.objects.all()[0:3]
-
-	return render(request, "myApp/students.html", {"students": studentsList})
-#分页显示学生
-def stupage(request,page):
-	page = int(page)
-	studentsList = Students.objects.all()[(page-1)*2:2*page]
-	return render(request, "myApp/students.html", {"students": studentsList})

@@ -13,10 +13,4 @@ urlpatterns = [
 	#路由至students
 	url(r'^students/$',views.students),
 	url(r'^grades/(\d+)/$',views.gradesStudents),
-	#增加学生属性
-	url(r'^addstudents/$',views.addStudents),
-	#查询N条数据
-    url(r'^students1/$',views.students1),
-    #分页显示学生
-    url(r'^stupage/(\d+)/$',views.stupage)
 ]
