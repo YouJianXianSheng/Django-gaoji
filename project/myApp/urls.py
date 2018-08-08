@@ -6,7 +6,7 @@ from . import views
 
 urlpatterns = [
 	#路由至主页
-    url(r'^$', views.Index),
+	url(r'^$', views.Index),
 	url(r'^(\d+)/$',views.detail),
 	#路由至grades
 	url(r'^grades/$',views.grades),
