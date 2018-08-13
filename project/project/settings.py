@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     #自定义中间件
-    'middleware.myApp.myMiddle.MyMiddle'
+    # 'middleware.myApp.myMiddle.MyMiddle',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -129,3 +129,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+#上传文件目录
+MDEIA_ROOT=os.path.join(BASE_DIR,r'static\upfile')
