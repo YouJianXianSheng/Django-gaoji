@@ -13,4 +13,7 @@ urlpatterns = [
 	#路由至students
 	url(r'^students/$',views.students),
 	url(r'^grades/(\d+)/$',views.gradesStudents),
+	#上传文件
+	url(r'^file/$',views.file),
+	url(r'^upfile/$',views.upfile),
 ]

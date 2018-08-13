@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Grades,Students
+import os
+from django.conf import settings
 
 # Create your views here.
-def Index(request):
-    return HttpResponse("Hello Python!!!!")
-
+def index(request):
+    return render(request,'myApp/index.html')
 def detail(request,num):
 	return HttpResponse("detail-%s"%num)
 	
@@ -26,3 +27,21 @@ def gradesStudents(request,num):
 	studentsList = grade.students_set.all()
 
 	return render(request,'myApp/students.html',{'students':studentsList})
+#上传文件
+def file(request):
+	return render(request,'myApp/upfile.html')
+def upfile(request):
+	#判断是不是post请求
+	if request.method == 'POST':
+		#上传的文件默认储存在request.FILES中
+		f = request.FILES['file']
+		#创建路径队形
+		filePath = os.path.join(settings.MDEIA_ROOT,f.name)
+		#保存文件
+		with open(filePath,'wb') as fp:
+			#f.chunks()分段上传
+			for into in f.chunks():
+				fp.write(into)
+		return HttpResponse('上传成功')
+	else:
+		return HttpResponse('不是post请求')
